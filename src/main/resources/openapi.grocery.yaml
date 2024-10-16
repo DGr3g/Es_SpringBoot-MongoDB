@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: API portale
+  description: |-
+    Microservizi per Esercizio Mongo, con operazioni Crud 
+  version: 1.0.0
+  contact:
+    email: it@gmail.com
+
+
+paths:
+  /grocery/:
+    post:
+      tags:
+        - grocery
+      summary: Create a new grocery
+      description: Add a new grocery to the database
+      operationId: createGrocery
+      requestBody:
+        description: Data for the new grocery
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroceryItemDTO'
+      responses:
+        '201':
+          description: Artist created
+          content:
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/GroceryItemDTO'
+        '400':
+          description: Invalid input
+        '404':
+          description: Grocery not found
+
+    get:
+      tags:
+        - grocery
+      summary: List all grocery
+      description: Returns a list of all grocery
+      operationId: getAllGrocery
+      responses:
+        '200':
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroceryItemDTO'
+        '404':
+          description: No grocery found
+
+  /grocery/{id}:
+    get:
+      tags: 
+        - grocery
+      summary: Get grocery by id
+      description: Return a grocery by id
+      operationId: getGroceryById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/GroceryItemDTO'
+        '400':
+          description: Invalid input
+        '404':
+          description: No artists found
+    put:
+      tags:
+        - grocery
+      summary: update a  grocery
+      description: update a  grocery to the database
+      operationId: updateGrocery
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Data for the update grocery
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroceryItemDTO'
+      responses:
+        '201':
+          description: Artist created
+          content:
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/GroceryItemDTO'
+        '400':
+          description: Invalid input
+        '404':
+          description: Grocery not found
+
+    delete:
+      tags: 
+        - grocery
+      summary: Delete grocery by id
+      description: Delete a grocery by id
+      operationId: deleteGroceryById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: Invalid input
+        '404':
+          description: No artists found
+
+components:
+  # Creazione oggetti
+  schemas:
+    GroceryItemDTO: 
+      type: object
+      properties: 
+        id:
+          type: string
+          example: 1
+        nome:
+          type: string
+          example: Prodotto
+        quantity:
+          type: integer
+          format: int64
+          example: 10
+        category:
+          type: string
+          example: Categoria
+    GroceryItemDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroceryItemDTO'
+    

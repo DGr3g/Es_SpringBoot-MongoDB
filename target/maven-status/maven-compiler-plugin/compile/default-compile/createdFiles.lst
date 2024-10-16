@@ -1,0 +1,14 @@
+it\apuliadigital\mongoEs\model\GroceryItemDTO.class
+it\apuliadigital\mongoEs\MongoEsApplication.class
+it\apuliadigital\mongoEs\api\ApiUtil.class
+it\apuliadigital\mongoEs\mapper\DtoToEntityMapper.class
+it\apuliadigital\mongoEs\service\GroceryService.class
+it\apuliadigital\mongoEs\service\impl\GroceryServiceImpl.class
+it\apuliadigital\mongoEs\controller\GroceryController.class
+it\apuliadigital\mongoEs\mapper\DtoToEntityMapperImpl.class
+it\apuliadigital\mongoEs\entity\GroceryItem.class
+it\apuliadigital\mongoEs\mapper\EntityToDtoMapper.class
+it\apuliadigital\mongoEs\api\GroceryApi.class
+it\apuliadigital\mongoEs\controller\MongoController.class
+it\apuliadigital\mongoEs\repository\ItemRepository.class
+it\apuliadigital\mongoEs\mapper\EntityToDtoMapperImpl.class
